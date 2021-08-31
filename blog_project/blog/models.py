@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -10,6 +11,7 @@ class Blog(models.Model):
         return self.title
 
 class Comment(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     text = models.CharField(max_length=100)
     blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
