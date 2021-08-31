@@ -6,7 +6,11 @@ class BlogSerializer(serializers.ModelSerializer):
         model = Blog
         fields = '__all__'
 
-class CommentSerializer(serializers.ModelSerializer):
+class CommentSerializer(serializers.Serializer):
+    text = serializers.CharField()
+
+class BlogDetailSerializer(serializers.ModelSerializer):
+    comment_set = CommentSerializer(many=True)
     class Meta:
-        model = Comment
-        fields = '__all__'
+        model = Blog
+        fields = ['title','text','date_created','comment_set']
