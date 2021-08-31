@@ -14,3 +14,5 @@ class BlogDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
         fields = ['title','text','date_created','comment_set']
+
+
